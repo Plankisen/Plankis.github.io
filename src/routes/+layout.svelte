@@ -3,7 +3,7 @@
   <a href="/telltale">Telltale</a>
   <a
     target="_blank"
-    href="https://github.com/williamviktorsson/williamviktorsson.github.io"
+    href="https://github.com/Plankisen/Plankisen.github.io"
     >GitHub</a
   >
 </nav>
