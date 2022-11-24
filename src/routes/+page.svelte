@@ -15,7 +15,7 @@
 </script>
 
 
-<h1>Welcome to PEEPO CLICKERER</h1>
+<h1>Welcome to PEEPO CLICKER</h1>
 <p>Peepos: {clicks}</p>
 <div class = "buttons">
   <div>
