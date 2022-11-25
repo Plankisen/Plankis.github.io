@@ -297,7 +297,6 @@ startGame()
         margin: auto;
         width: auto;
         height: 200px;
-        outline: dashed 1px black;
         background: gray;
         width: 100vw;
         height: 100vh;
