@@ -4,7 +4,7 @@
         for (let index = 0; index < 2; index++) {
         cards.push({
             id: index + i * 2, // TODO: unique ids per card card
-            img: `https://picsum.photos/${index + i * 2+100}/200`, // TODO: unique images per card card
+            img: `https://picsum.photos/${i*5+100}/200`, // TODO: unique images per card card
             flipped: false,  // TODO: think
             completed: false,
         });
