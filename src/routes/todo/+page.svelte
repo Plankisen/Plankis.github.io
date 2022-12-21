@@ -1,4 +1,5 @@
 <script>
+import "@picocss/pico"
 let input = "";
 let todo = [];
 function pushInput(){

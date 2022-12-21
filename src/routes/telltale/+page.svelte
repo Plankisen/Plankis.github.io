@@ -1,4 +1,5 @@
 <script>
+    import "@picocss/pico"
     import { text } from 'svelte/internal'
     import { blur } from 'svelte/transition'
     import { onMount } from 'svelte'

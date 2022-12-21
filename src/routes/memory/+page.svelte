@@ -1,4 +1,5 @@
 <script>
+    import "@picocss/pico"
     let cards = [];
     for (let i = 0; i < 6; i++){
         for (let index = 0; index < 2; index++) {

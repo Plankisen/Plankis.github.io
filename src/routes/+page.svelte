@@ -1,4 +1,5 @@
 <script>
+import "@picocss/pico"
   let clicks = 0;
   let clickMultiplier = 1;
   function click() {
