@@ -23,7 +23,6 @@
   </script>
   
   <div class="container">
-    <h1>TODO: Complete assignment</h1>
     <div class="scrollable">
       <!-- TODO: loop over the messages and display them -->
       <article>
