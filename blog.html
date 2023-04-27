@@ -5,8 +5,9 @@
 		<link rel="icon" href="./favicon.png" />
 		<meta name="viewport" content="width=device-width" />
 		<meta http-equiv="content-security-policy" content="">
-		<link href="./_app/immutable/assets/_page-3870d9cc.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/_layout-65b6e76a.css" rel="stylesheet">
 		<link href="./_app/immutable/assets/pico-17913ccb.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/_page-2bd91cad.css" rel="stylesheet">
 		<link rel="modulepreload" href="./_app/immutable/start-eaafc544.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/index-6c645415.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/singletons-71757e84.js">
@@ -15,7 +16,8 @@
 		<link rel="modulepreload" href="./_app/immutable/components/pages/_layout.svelte-821d44b3.js">
 		<link rel="modulepreload" href="./_app/immutable/modules/pages/_layout.js-860f444f.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/_layout-27569177.js">
-		<link rel="modulepreload" href="./_app/immutable/components/pages/todo/_page.svelte-057b940b.js">
+		<link rel="modulepreload" href="./_app/immutable/components/pages/blog/_layout.svelte-f8f9cb15.js">
+		<link rel="modulepreload" href="./_app/immutable/components/pages/blog/_page.svelte-b735f31e.js">
 	</head>
 	<body>
 		<div style="display: contents">
@@ -31,15 +33,12 @@
 
 <hr>
 
-<h1 class="svelte-1yfsypo">Todo</h1>
-    
-    <div><div class="input svelte-1yfsypo"><input type="text" placeholder="what to do?" value="">
-        <button class="svelte-1yfsypo">+</button></div>
-    <ul><div class="output svelte-1yfsypo"></div></ul>
-    </div>
+<main><main class="svelte-a8n4rl"><h1>Super blog</h1>
+    <a class="btn svelte-a8n4rl" href="/blog/casino1">Casino update 1</a>
+</main></main>
 
 
-		<script type="module" data-sveltekit-hydrate="ak3cy6">
+		<script type="module" data-sveltekit-hydrate="1p21ndn">
 			import { start } from "./_app/immutable/start-eaafc544.js";
 
 			start({
@@ -47,14 +46,14 @@
 				hydrate: {
 					status: 200,
 					error: null,
-					node_ids: [0, 9],
+					node_ids: [0, 2, 4],
 					params: {},
-					route: {"id":"/todo"},
-					data: [null,null],
+					route: {"id":"/blog"},
+					data: [null,null,null],
 					form: null
 				},
 				paths: {"base":"","assets":""},
-				target: document.querySelector('[data-sveltekit-hydrate="ak3cy6"]').parentNode,
+				target: document.querySelector('[data-sveltekit-hydrate="1p21ndn"]').parentNode,
 				version: "1682598721180"
 			});
 		</script>
