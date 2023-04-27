@@ -14,9 +14,10 @@ tills den såg ut som jag ville ha den. Detta är en lista av features som jag n
 * Ett ganska bra gjort blackjack spel men behövs lite mer styling
 <img src="/blackjack.png">
 
-Inte mycket intressant hände under denna period, inga specfika problem som jag har löst, så detta är lite kod som visar hur min sidebar fungerar och hur den far ut och in beroende på om man håller sin mus längst vänstra sidan av hemsidan eller inte.
+Inte mycket intressant hände under denna period, inga specifika problem som jag har löst, så detta är lite kod som visar hur min sidebar fungerar och hur den far ut och in beroende på om man håller sin mus längst vänstra sidan av hemsidan eller inte.
 
 ```js
+
   export let items = [
     { title: 'Home', icon: '🏠', link: '/home' },
     { title: 'Crash', icon: '💥', link: '/crash' },

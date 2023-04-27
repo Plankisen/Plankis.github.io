@@ -2,6 +2,7 @@
 
 export async function load({ params }) {
 
+    console.log(params);
     const temp = await import(`../../../lib/posts/${params.post}.md`)
 
     

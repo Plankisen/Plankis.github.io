@@ -7,13 +7,13 @@ const config = {
 		adapter: adapter({
 			pages: 'docs',
 			assets: 'docs',
-		})
+		})	
 	},
 	extensions: ['.svelte', '.md', '.svx'],
 
 	preprocess: [
 		mdsvex({
-			extensions: ['.md']
+			extensions: ['.md','.svx']
 		})
 	]
 };

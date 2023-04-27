@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="../favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="content-security-policy" content="">
+		<link href="../_app/immutable/assets/_layout-65b6e76a.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/pico-17913ccb.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/_page-b7455bae.css" rel="stylesheet">
+		<link rel="modulepreload" href="../_app/immutable/start-38fe4912.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/index-6c645415.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/singletons-71757e84.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/preload-helper-b21cceae.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/parse-c28c2630.js">
+		<link rel="modulepreload" href="../_app/immutable/components/pages/_layout.svelte-64b4cde1.js">
+		<link rel="modulepreload" href="../_app/immutable/modules/pages/_layout.js-860f444f.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/_layout-27569177.js">
+		<link rel="modulepreload" href="../_app/immutable/components/pages/blog/_layout.svelte-86fd9a5a.js">
+		<link rel="modulepreload" href="../_app/immutable/components/pages/blog/_post_/_page.svelte-24a7554c.js">
+		<link rel="modulepreload" href="../_app/immutable/modules/pages/blog/_post_/_page.js-3413e7a1.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/_page-b3386c2e.js">
+	</head>
+	<body>
+		<div style="display: contents">
+
+
+<nav><a href="/">Hem</a>
+  <a href="/telltale">Telltale</a>
+  <a href="/todo">Todo</a>
+  <a href="/memory">Memory</a>
+  <a href="/chatbot">Chatbot</a>
+  <a href="/blog">Blog</a>
+  <a target="_blank" href="https://github.com/Plankisen/Plankisen.github.io">GitHub</a></nav>
+
+<hr>
+
+<main><main class="svelte-1vgpxi4"><article class="post svelte-1vgpxi4"><h1>CASINO FIRST UPDATE</h1>
+<p>Så jag har basically använt ChatGPT för att göra simpla versioner av olika features sedan ändrat koden ChatGPT gav mig
+tills den såg ut som jag ville ha den. Detta är en lista av features som jag nu har gjort.</p>
+<ul><li>Simpelt home page<img src="/home.png"></li>
+<li>Fungerande Navbar/Sidebar<img src="/home_sidebar.png"></li>
+<li>Simpel crash funktionalitet<img src="/crash.png"></li>
+<li>Simpel slots funktionalitet<img src="/slots.png"></li>
+<li>Ett ganska bra gjort blackjack spel men behövs lite mer styling<img src="/blackjack.png"></li></ul>
+<p>Inte mycket intressant hände under denna period, inga specifika problem som jag har löst, så detta är lite kod som visar hur min sidebar fungerar och hur den far ut och in beroende på om man håller sin mus längst vänstra sidan av hemsidan eller inte.</p>
+<pre class="language-js"><!-- HTML_TAG_START --><code class="language-js">
+  <span class="token keyword">export</span> <span class="token keyword">let</span> items <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">&#123;</span> <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">'Home'</span><span class="token punctuation">,</span> <span class="token literal-property property">icon</span><span class="token operator">:</span> <span class="token string">'🏠'</span><span class="token punctuation">,</span> <span class="token literal-property property">link</span><span class="token operator">:</span> <span class="token string">'/home'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#123;</span> <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">'Crash'</span><span class="token punctuation">,</span> <span class="token literal-property property">icon</span><span class="token operator">:</span> <span class="token string">'💥'</span><span class="token punctuation">,</span> <span class="token literal-property property">link</span><span class="token operator">:</span> <span class="token string">'/crash'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#123;</span> <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">'Slots'</span><span class="token punctuation">,</span> <span class="token literal-property property">icon</span><span class="token operator">:</span> <span class="token string">'🎰'</span><span class="token punctuation">,</span> <span class="token literal-property property">link</span><span class="token operator">:</span> <span class="token string">'/slots'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#123;</span> <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">'Blackjack'</span><span class="token punctuation">,</span> <span class="token literal-property property">icon</span><span class="token operator">:</span> <span class="token string">'🃏'</span><span class="token punctuation">,</span> <span class="token literal-property property">link</span><span class="token operator">:</span> <span class="token string">'/blackjack'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#123;</span> <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">'Roulette'</span><span class="token punctuation">,</span> <span class="token literal-property property">icon</span><span class="token operator">:</span> <span class="token string">'🎡'</span><span class="token punctuation">,</span> <span class="token literal-property property">link</span><span class="token operator">:</span> <span class="token string">'/roulette'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">let</span> activeIndex <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">function</span> <span class="token function">setActive</span><span class="token punctuation">(</span><span class="token parameter">index</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    activeIndex <span class="token operator">=</span> index<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+
+  <span class="token keyword">let</span> showSidebar <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">function</span> <span class="token function">toggleSidebar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    showSidebar <span class="token operator">=</span> <span class="token operator">!</span>showSidebar<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+
+  <span class="token keyword">function</span> <span class="token function">handleMouseEnter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    showSidebar <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+
+  <span class="token keyword">function</span> <span class="token function">handleMouseLeave</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+      showSidebar <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token number">300</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+
+  <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"sidebar-wrapper"</span> <span class="token literal-property property">on</span><span class="token operator">:</span>mouseenter<span class="token operator">=</span><span class="token punctuation">&#123;</span>handleMouseEnter<span class="token punctuation">&#125;</span> on<span class="token operator">:</span>mouseleave<span class="token operator">=</span><span class="token punctuation">&#123;</span>handleMouseLeave<span class="token punctuation">&#125;</span><span class="token operator">></span>
+    <span class="token punctuation">&#123;</span>#<span class="token keyword">if</span> showSidebar<span class="token punctuation">&#125;</span>
+      <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"sidebar"</span><span class="token operator">></span>
+        <span class="token punctuation">&#123;</span>#each items <span class="token keyword">as</span> item<span class="token punctuation">,</span> index<span class="token punctuation">&#125;</span>
+          <span class="token operator">&lt;</span>div
+            <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"sidebar-item &#123;index === activeIndex ? 'active' : ''&#125;"</span>
+            <span class="token literal-property property">on</span><span class="token operator">:</span>click<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">setActive</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">&#125;</span>
+          <span class="token operator">></span>
+            <span class="token operator">&lt;</span>span <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"sidebar-icon"</span><span class="token operator">></span><span class="token punctuation">&#123;</span>item<span class="token punctuation">.</span>icon<span class="token punctuation">&#125;</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+            <span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token punctuation">&#123;</span>item<span class="token punctuation">.</span>title<span class="token punctuation">&#125;</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span>
+          <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+        <span class="token punctuation">&#123;</span><span class="token operator">/</span>each<span class="token punctuation">&#125;</span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token punctuation">&#123;</span><span class="token operator">/</span><span class="token keyword">if</span><span class="token punctuation">&#125;</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span></code><!-- HTML_TAG_END --></pre></article>
+    <a href="/blog" class="btn svelte-1vgpxi4">Return</a>
+    <div class="svelte-1vgpxi4"></div>
+</main></main>
+
+
+		<script type="module" data-sveltekit-hydrate="rfqcip">
+			import { start } from "../_app/immutable/start-38fe4912.js";
+
+			start({
+				env: {},
+				hydrate: {
+					status: 200,
+					error: null,
+					node_ids: [0, 2, 5],
+					params: {post:"casino1"},
+					route: {"id":"/blog/[post]"},
+					data: [null,null,null],
+					form: null
+				},
+				paths: {"base":"","assets":""},
+				target: document.querySelector('[data-sveltekit-hydrate="rfqcip"]').parentNode,
+				version: "1682598623707"
+			});
+		</script>
+	</div>
+	</body>
+</html>
