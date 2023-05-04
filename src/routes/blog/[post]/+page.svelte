@@ -74,7 +74,7 @@
     }
 
     :global(p, li, h1){
-        color: rgb(40, 219, 213)
+        color: white;
     }
 
 </style>
