@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="../favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<meta http-equiv="content-security-policy" content="">
+		<link href="../_app/immutable/assets/_layout-65b6e76a.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/pico-17913ccb.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/_page-9e607569.css" rel="stylesheet">
+		<link rel="modulepreload" href="../_app/immutable/start-2e0bc62e.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/index-6c645415.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/singletons-71757e84.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/preload-helper-b21cceae.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/parse-c28c2630.js">
+		<link rel="modulepreload" href="../_app/immutable/components/pages/_layout.svelte-64b4cde1.js">
+		<link rel="modulepreload" href="../_app/immutable/modules/pages/_layout.js-860f444f.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/_layout-27569177.js">
+		<link rel="modulepreload" href="../_app/immutable/components/pages/blog/_layout.svelte-86fd9a5a.js">
+		<link rel="modulepreload" href="../_app/immutable/components/pages/blog/_post_/_page.svelte-125cf5ad.js">
+		<link rel="modulepreload" href="../_app/immutable/modules/pages/blog/_post_/_page.js-7f8f4a86.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/_page-b8eccbce.js">
+	</head>
+	<body>
+		<div style="display: contents">
+
+
+<nav><a href="/">Hem</a>
+  <a href="/telltale">Telltale</a>
+  <a href="/todo">Todo</a>
+  <a href="/memory">Memory</a>
+  <a href="/chatbot">Chatbot</a>
+  <a href="/blog">Blog</a>
+  <a target="_blank" href="https://github.com/Plankisen/Plankisen.github.io">GitHub</a></nav>
+
+<hr>
+
+<main><main class="svelte-g4hvg4"><article class="post svelte-g4hvg4"><h1>CASINO SECOND UPDATE</h1>
+<p>Sedan första inlägget har jag inte gjort så mycket annat än att fokusera på att fixa ett currency system till spelen.</p>
+<img src="/currency.png">
+<p>Det är ganska simpelt, man skriver hur mycket man vill betta och sedan spelar man och ser om man vinner.</p>
+<p>Här är lite kod som visar lite hur det fungerar för blackjack.</p>
+<pre class="language-js"><!-- HTML_TAG_START --><code class="language-js"><span class="token operator">&lt;</span>script<span class="token operator">></span>
+<span class="token keyword">let</span> money <span class="token operator">=</span> <span class="token number">50</span>
+<span class="token keyword">let</span> betAmount <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+<span class="token operator">&lt;</span>input <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"bet-input"</span> type<span class="token operator">=</span><span class="token string">"number"</span> placeholder<span class="token operator">=</span><span class="token string">"Enter bet amount"</span> <span class="token literal-property property">bind</span><span class="token operator">:</span>value<span class="token operator">=</span><span class="token punctuation">&#123;</span>betAmount<span class="token punctuation">&#125;</span><span class="token operator">></span>
+ <span class="token keyword">function</span> <span class="token function">deal</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+     <span class="token keyword">if</span> <span class="token punctuation">(</span>money <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"You're out of money!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isNaN</span><span class="token punctuation">(</span>betAmount<span class="token punctuation">)</span> <span class="token operator">||</span> betAmount <span class="token operator">&lt;=</span> <span class="token number">0</span> <span class="token operator">||</span> betAmount <span class="token operator">></span> money<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"Invalid bet amount!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+      money <span class="token operator">-=</span> betAmount<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token operator">...</span>
+ <span class="token punctuation">&#125;</span>
+ <span class="token keyword">function</span> <span class="token function">stand</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token operator">...</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>dealerScore <span class="token operator">></span> <span class="token number">21</span> <span class="token operator">||</span> playerScore <span class="token operator">></span> dealerScore<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        money <span class="token operator">+=</span> betAmount <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        gameOver <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+        gameOver <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span></code><!-- HTML_TAG_END --></pre></article>
+    <a href="/blog" class="btn svelte-g4hvg4">Return</a>
+    <div class="svelte-g4hvg4"></div>
+</main></main>
+
+
+		<script type="module" data-sveltekit-hydrate="1fnxay5">
+			import { start } from "../_app/immutable/start-2e0bc62e.js";
+
+			start({
+				env: {},
+				hydrate: {
+					status: 200,
+					error: null,
+					node_ids: [0, 2, 5],
+					params: {post:"casino2"},
+					route: {"id":"/blog/[post]"},
+					data: [null,null,null],
+					form: null
+				},
+				paths: {"base":"","assets":""},
+				target: document.querySelector('[data-sveltekit-hydrate="1fnxay5"]').parentNode,
+				version: "1683812364272"
+			});
+		</script>
+	</div>
+	</body>
+</html>

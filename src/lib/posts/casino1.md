@@ -1,3 +1,8 @@
+---
+title: Tjena
+date: "2023-04-21"
+---
+
 #  CASINO FIRST UPDATE
 
 Så jag har basically använt ChatGPT för att göra simpla versioner av olika features sedan ändrat koden ChatGPT gav mig

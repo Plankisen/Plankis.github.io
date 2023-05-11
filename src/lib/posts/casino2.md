@@ -1,3 +1,8 @@
+---
+title: Tjena
+date: "2023-05-11"
+---
+
 # CASINO SECOND UPDATE
 
 Sedan första inlägget har jag inte gjort så mycket annat än att fokusera på att fixa ett currency system till spelen.
