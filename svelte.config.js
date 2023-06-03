@@ -1,5 +1,6 @@
 import adapter from '@sveltejs/adapter-static';
 import { mdsvex } from 'mdsvex'
+import preprocess from "svelte-preprocess";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -9,6 +10,11 @@ const config = {
 			assets: 'docs',
 		})	
 	},
+	preprocess: [
+		preprocess({
+		  postcss: true,
+		}),
+	],
 	extensions: ['.svelte', '.md', '.svx'],
 
 	preprocess: [
