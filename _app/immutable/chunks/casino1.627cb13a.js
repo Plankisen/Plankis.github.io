@@ -1,47 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" href="../favicon.png" />
-		<meta name="viewport" content="width=device-width" />
-		
-		<link href="../_app/immutable/assets/2.2f52a585.css" rel="stylesheet">
-		<link href="../_app/immutable/assets/pico.33e951e9.css" rel="stylesheet">
-		<link href="../_app/immutable/assets/5.206d1311.css" rel="stylesheet">
-		<link rel="modulepreload" href="../_app/immutable/entry/start.1a3a94e2.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/index.488ca7c4.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/singletons.28f87197.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/parse.bee59afc.js">
-		<link rel="modulepreload" href="../_app/immutable/entry/app.9a065c80.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/preload-helper.41c905a7.js">
-		<link rel="modulepreload" href="../_app/immutable/nodes/0.2a7bf043.js">
-		<link rel="modulepreload" href="../_app/immutable/nodes/2.98b87621.js">
-		<link rel="modulepreload" href="../_app/immutable/nodes/5.ac8c61ff.js">
-	</head>
-	<body>
-		<div style="display: contents">
-
-
-<nav><a href="/">Hem</a>
-  <a href="/telltale">Telltale</a>
-  <a href="/todo">Todo</a>
-  <a href="/memory">Memory</a>
-  <a href="/chatbot">Chatbot</a>
-  <a href="/blog">Blog</a>
-  <a target="_blank" href="https://github.com/Plankisen/Plankisen.github.io">GitHub</a></nav>
-
-<hr>
-
-<main><main class="svelte-g4hvg4"><article class="post svelte-g4hvg4"><h1>CASINO FIRST UPDATE</h1>
-<p>Så jag har basically använt ChatGPT för att göra simpla versioner av olika features sedan ändrat koden ChatGPT gav mig
-tills den såg ut som jag ville ha den. Detta är en lista av features som jag nu har gjort.</p>
-<ul><li>Simpelt home page<img src="/home.png"></li>
-<li>Fungerande Navbar/Sidebar<img src="/home_sidebar.png"></li>
-<li>Simpel crash funktionalitet<img src="/crash.png"></li>
-<li>Simpel slots funktionalitet<img src="/slots.png"></li>
-<li>Ett ganska bra gjort blackjack spel men behövs lite mer styling<img src="/blackjack.png"></li></ul>
-<p>Inte mycket intressant hände under denna period, inga specifika problem som jag har löst, så detta är lite kod som visar hur min sidebar fungerar och hur den far ut och in beroende på om man håller sin mus längst vänstra sidan av hemsidan eller inte.</p>
-<pre class="language-js"><!-- HTML_TAG_START --><code class="language-js">
+import{S as rs,i as cs,s as is,k as t,q as k,a as u,l as p,m as r,r as d,h as n,c as m,J as M,n as w,b as c,D as a,H as Y}from"./index.488ca7c4.js";function ks(es){let i,A,C,f,D,G,e,h,F,j,Z,H,y,N,I,$,R,v,q,E,ss,U,b,O,x,as,B,_,J,T,ns,L,S,z,P,g,os=`<code class="language-js">
   <span class="token keyword">export</span> <span class="token keyword">let</span> items <span class="token operator">=</span> <span class="token punctuation">[</span>
     <span class="token punctuation">&#123;</span> <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">'Home'</span><span class="token punctuation">,</span> <span class="token literal-property property">icon</span><span class="token operator">:</span> <span class="token string">'🏠'</span><span class="token punctuation">,</span> <span class="token literal-property property">link</span><span class="token operator">:</span> <span class="token string">'/home'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
     <span class="token punctuation">&#123;</span> <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">'Crash'</span><span class="token punctuation">,</span> <span class="token literal-property property">icon</span><span class="token operator">:</span> <span class="token string">'💥'</span><span class="token punctuation">,</span> <span class="token literal-property property">link</span><span class="token operator">:</span> <span class="token string">'/crash'</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
@@ -86,37 +43,6 @@ tills den såg ut som jag ville ha den. Detta är en lista av features som jag n
         <span class="token punctuation">&#123;</span><span class="token operator">/</span>each<span class="token punctuation">&#125;</span>
       <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
     <span class="token punctuation">&#123;</span><span class="token operator">/</span><span class="token keyword">if</span><span class="token punctuation">&#125;</span>
-  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span></code><!-- HTML_TAG_END --></pre></article>
-    <a href="/blog" class="btn svelte-g4hvg4">Return</a>
-    <div class="svelte-g4hvg4"></div>
-</main></main>
-
-
-			
-			<script>
-				{
-					__sveltekit_iqy8uy = {
-						base: new URL("..", location).pathname.slice(0, -1),
-						env: {}
-					};
-
-					const element = document.currentScript.parentElement;
-
-					const data = [null,null,null];
-
-					Promise.all([
-						import("../_app/immutable/entry/start.1a3a94e2.js"),
-						import("../_app/immutable/entry/app.9a065c80.js")
-					]).then(([kit, app]) => {
-						kit.start(app, element, {
-							node_ids: [0, 2, 5],
-							data,
-							form: null,
-							error: null
-						});
-					});
-				}
-			</script>
-		</div>
-	</body>
-</html>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span></code>`;return{c(){i=t("h1"),A=k("CASINO FIRST UPDATE"),C=u(),f=t("p"),D=k(`Så jag har basically använt ChatGPT för att göra simpla versioner av olika features sedan ändrat koden ChatGPT gav mig
+tills den såg ut som jag ville ha den. Detta är en lista av features som jag nu har gjort.`),G=u(),e=t("ul"),h=t("li"),F=k("Simpelt home page"),j=t("img"),H=u(),y=t("li"),N=k("Fungerande Navbar/Sidebar"),I=t("img"),R=u(),v=t("li"),q=k("Simpel crash funktionalitet"),E=t("img"),U=u(),b=t("li"),O=k("Simpel slots funktionalitet"),x=t("img"),B=u(),_=t("li"),J=k("Ett ganska bra gjort blackjack spel men behövs lite mer styling"),T=t("img"),L=u(),S=t("p"),z=k("Inte mycket intressant hände under denna period, inga specifika problem som jag har löst, så detta är lite kod som visar hur min sidebar fungerar och hur den far ut och in beroende på om man håller sin mus längst vänstra sidan av hemsidan eller inte."),P=u(),g=t("pre"),this.h()},l(s){i=p(s,"H1",{});var o=r(i);A=d(o,"CASINO FIRST UPDATE"),o.forEach(n),C=m(s),f=p(s,"P",{});var ts=r(f);D=d(ts,`Så jag har basically använt ChatGPT för att göra simpla versioner av olika features sedan ändrat koden ChatGPT gav mig
+tills den såg ut som jag ville ha den. Detta är en lista av features som jag nu har gjort.`),ts.forEach(n),G=m(s),e=p(s,"UL",{});var l=r(e);h=p(l,"LI",{});var K=r(h);F=d(K,"Simpelt home page"),j=p(K,"IMG",{src:!0}),K.forEach(n),H=m(l),y=p(l,"LI",{});var Q=r(y);N=d(Q,"Fungerande Navbar/Sidebar"),I=p(Q,"IMG",{src:!0}),Q.forEach(n),R=m(l),v=p(l,"LI",{});var V=r(v);q=d(V,"Simpel crash funktionalitet"),E=p(V,"IMG",{src:!0}),V.forEach(n),U=m(l),b=p(l,"LI",{});var W=r(b);O=d(W,"Simpel slots funktionalitet"),x=p(W,"IMG",{src:!0}),W.forEach(n),B=m(l),_=p(l,"LI",{});var X=r(_);J=d(X,"Ett ganska bra gjort blackjack spel men behövs lite mer styling"),T=p(X,"IMG",{src:!0}),X.forEach(n),l.forEach(n),L=m(s),S=p(s,"P",{});var ps=r(S);z=d(ps,"Inte mycket intressant hände under denna period, inga specifika problem som jag har löst, så detta är lite kod som visar hur min sidebar fungerar och hur den far ut och in beroende på om man håller sin mus längst vänstra sidan av hemsidan eller inte."),ps.forEach(n),P=m(s),g=p(s,"PRE",{class:!0});var ls=r(g);ls.forEach(n),this.h()},h(){M(j.src,Z="/home.png")||w(j,"src",Z),M(I.src,$="/home_sidebar.png")||w(I,"src",$),M(E.src,ss="/crash.png")||w(E,"src",ss),M(x.src,as="/slots.png")||w(x,"src",as),M(T.src,ns="/blackjack.png")||w(T,"src",ns),w(g,"class","language-js")},m(s,o){c(s,i,o),a(i,A),c(s,C,o),c(s,f,o),a(f,D),c(s,G,o),c(s,e,o),a(e,h),a(h,F),a(h,j),a(e,H),a(e,y),a(y,N),a(y,I),a(e,R),a(e,v),a(v,q),a(v,E),a(e,U),a(e,b),a(b,O),a(b,x),a(e,B),a(e,_),a(_,J),a(_,T),c(s,L,o),c(s,S,o),a(S,z),c(s,P,o),c(s,g,o),g.innerHTML=os},p:Y,i:Y,o:Y,d(s){s&&n(i),s&&n(C),s&&n(f),s&&n(G),s&&n(e),s&&n(L),s&&n(S),s&&n(P),s&&n(g)}}}const ds={title:"Tjena",date:"2023-04-21"};class ms extends rs{constructor(i){super(),cs(this,i,null,ks,is,{})}}export{ms as default,ds as metadata};

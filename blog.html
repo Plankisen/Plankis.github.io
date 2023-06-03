@@ -4,20 +4,19 @@
 		<meta charset="utf-8" />
 		<link rel="icon" href="./favicon.png" />
 		<meta name="viewport" content="width=device-width" />
-		<meta http-equiv="content-security-policy" content="">
-		<link href="./_app/immutable/assets/_layout-65b6e76a.css" rel="stylesheet">
-		<link href="./_app/immutable/assets/pico-17913ccb.css" rel="stylesheet">
-		<link href="./_app/immutable/assets/_page-87ced1f2.css" rel="stylesheet">
-		<link rel="modulepreload" href="./_app/immutable/start-3db4b1eb.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/index-6c645415.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/singletons-71757e84.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/preload-helper-b21cceae.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/parse-c28c2630.js">
-		<link rel="modulepreload" href="./_app/immutable/components/pages/_layout.svelte-821d44b3.js">
-		<link rel="modulepreload" href="./_app/immutable/modules/pages/_layout.js-860f444f.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/_layout-27569177.js">
-		<link rel="modulepreload" href="./_app/immutable/components/pages/blog/_layout.svelte-f8f9cb15.js">
-		<link rel="modulepreload" href="./_app/immutable/components/pages/blog/_page.svelte-37c5f2e1.js">
+		
+		<link href="./_app/immutable/assets/2.2f52a585.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/pico.33e951e9.css" rel="stylesheet">
+		<link href="./_app/immutable/assets/4.1b9523b4.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.1a3a94e2.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.488ca7c4.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.28f87197.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/parse.bee59afc.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.9a065c80.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/preload-helper.41c905a7.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/0.2a7bf043.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/2.98b87621.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/4.6fcc93fd.js">
 	</head>
 	<body>
 		<div style="display: contents">
@@ -39,25 +38,31 @@
 </main></main>
 
 
-		<script type="module" data-sveltekit-hydrate="1u2fewk">
-			import { start } from "./_app/immutable/start-3db4b1eb.js";
+			
+			<script>
+				{
+					__sveltekit_iqy8uy = {
+						base: new URL(".", location).pathname.slice(0, -1),
+						env: {}
+					};
 
-			start({
-				env: {},
-				hydrate: {
-					status: 200,
-					error: null,
-					node_ids: [0, 2, 4],
-					params: {},
-					route: {"id":"/blog"},
-					data: [null,null,null],
-					form: null
-				},
-				paths: {"base":"","assets":""},
-				target: document.querySelector('[data-sveltekit-hydrate="1u2fewk"]').parentNode,
-				version: "1683871306802"
-			});
-		</script>
-	</div>
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null,null];
+
+					Promise.all([
+						import("./_app/immutable/entry/start.1a3a94e2.js"),
+						import("./_app/immutable/entry/app.9a065c80.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 2, 4],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
 	</body>
 </html>

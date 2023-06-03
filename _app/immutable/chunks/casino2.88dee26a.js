@@ -1,43 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" href="../favicon.png" />
-		<meta name="viewport" content="width=device-width" />
-		
-		<link href="../_app/immutable/assets/2.2f52a585.css" rel="stylesheet">
-		<link href="../_app/immutable/assets/pico.33e951e9.css" rel="stylesheet">
-		<link href="../_app/immutable/assets/5.206d1311.css" rel="stylesheet">
-		<link rel="modulepreload" href="../_app/immutable/entry/start.1a3a94e2.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/index.488ca7c4.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/singletons.28f87197.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/parse.bee59afc.js">
-		<link rel="modulepreload" href="../_app/immutable/entry/app.9a065c80.js">
-		<link rel="modulepreload" href="../_app/immutable/chunks/preload-helper.41c905a7.js">
-		<link rel="modulepreload" href="../_app/immutable/nodes/0.2a7bf043.js">
-		<link rel="modulepreload" href="../_app/immutable/nodes/2.98b87621.js">
-		<link rel="modulepreload" href="../_app/immutable/nodes/5.ac8c61ff.js">
-	</head>
-	<body>
-		<div style="display: contents">
-
-
-<nav><a href="/">Hem</a>
-  <a href="/telltale">Telltale</a>
-  <a href="/todo">Todo</a>
-  <a href="/memory">Memory</a>
-  <a href="/chatbot">Chatbot</a>
-  <a href="/blog">Blog</a>
-  <a target="_blank" href="https://github.com/Plankisen/Plankisen.github.io">GitHub</a></nav>
-
-<hr>
-
-<main><main class="svelte-g4hvg4"><article class="post svelte-g4hvg4"><h1>CASINO SECOND UPDATE</h1>
-<p>Sedan första inlägget har jag inte gjort så mycket annat än att fokusera på att fixa ett currency system till spelen.</p>
-<img src="/currency.png">
-<p>Det är ganska simpelt, man skriver hur mycket man vill betta och sedan spelar man och ser om man vinner.</p>
-<p>Här är lite kod som visar lite hur det fungerar för blackjack.</p>
-<pre class="language-js"><!-- HTML_TAG_START --><code class="language-js"><span class="token operator">&lt;</span>script<span class="token operator">></span>
+import{S as q,i as M,s as U,k as u,q as w,a as i,l as k,m,r as A,h as n,c as f,J as G,n as P,b as t,D as E,H as x}from"./index.488ca7c4.js";function J(H){let p,S,y,o,h,b,l,D,d,c,j,v,r,g,_,e,I=`<code class="language-js"><span class="token operator">&lt;</span>script<span class="token operator">></span>
 <span class="token keyword">let</span> money <span class="token operator">=</span> <span class="token number">50</span>
 <span class="token keyword">let</span> betAmount <span class="token operator">=</span> <span class="token number">0</span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
@@ -64,37 +25,4 @@
         <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
         gameOver <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
         <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span></code><!-- HTML_TAG_END --></pre></article>
-    <a href="/blog" class="btn svelte-g4hvg4">Return</a>
-    <div class="svelte-g4hvg4"></div>
-</main></main>
-
-
-			
-			<script>
-				{
-					__sveltekit_iqy8uy = {
-						base: new URL("..", location).pathname.slice(0, -1),
-						env: {}
-					};
-
-					const element = document.currentScript.parentElement;
-
-					const data = [null,null,null];
-
-					Promise.all([
-						import("../_app/immutable/entry/start.1a3a94e2.js"),
-						import("../_app/immutable/entry/app.9a065c80.js")
-					]).then(([kit, app]) => {
-						kit.start(app, element, {
-							node_ids: [0, 2, 5],
-							data,
-							form: null,
-							error: null
-						});
-					});
-				}
-			</script>
-		</div>
-	</body>
-</html>
+    <span class="token punctuation">&#125;</span></code>`;return{c(){p=u("h1"),S=w("CASINO SECOND UPDATE"),y=i(),o=u("p"),h=w("Sedan första inlägget har jag inte gjort så mycket annat än att fokusera på att fixa ett currency system till spelen."),b=i(),l=u("img"),d=i(),c=u("p"),j=w("Det är ganska simpelt, man skriver hur mycket man vill betta och sedan spelar man och ser om man vinner."),v=i(),r=u("p"),g=w("Här är lite kod som visar lite hur det fungerar för blackjack."),_=i(),e=u("pre"),this.h()},l(s){p=k(s,"H1",{});var a=m(p);S=A(a,"CASINO SECOND UPDATE"),a.forEach(n),y=f(s),o=k(s,"P",{});var C=m(o);h=A(C,"Sedan första inlägget har jag inte gjort så mycket annat än att fokusera på att fixa ett currency system till spelen."),C.forEach(n),b=f(s),l=k(s,"IMG",{src:!0}),d=f(s),c=k(s,"P",{});var N=m(c);j=A(N,"Det är ganska simpelt, man skriver hur mycket man vill betta och sedan spelar man och ser om man vinner."),N.forEach(n),v=f(s),r=k(s,"P",{});var O=m(r);g=A(O,"Här är lite kod som visar lite hur det fungerar för blackjack."),O.forEach(n),_=f(s),e=k(s,"PRE",{class:!0});var T=m(e);T.forEach(n),this.h()},h(){G(l.src,D="/currency.png")||P(l,"src",D),P(e,"class","language-js")},m(s,a){t(s,p,a),E(p,S),t(s,y,a),t(s,o,a),E(o,h),t(s,b,a),t(s,l,a),t(s,d,a),t(s,c,a),E(c,j),t(s,v,a),t(s,r,a),E(r,g),t(s,_,a),t(s,e,a),e.innerHTML=I},p:x,i:x,o:x,d(s){s&&n(p),s&&n(y),s&&n(o),s&&n(b),s&&n(l),s&&n(d),s&&n(c),s&&n(v),s&&n(r),s&&n(_),s&&n(e)}}}const R={title:"Tjena",date:"2023-05-11"};class Y extends q{constructor(p){super(),M(this,p,null,J,U,{})}}export{Y as default,R as metadata};
