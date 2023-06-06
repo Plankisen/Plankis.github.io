@@ -708,6 +708,6 @@
     @font-face{
           font-family: "JosefinSans";
           font-style: normal;
-          src: url( "/fonts/JosefinSans-VariableFont_wght.ttf");
+          src: url("/fonts/JosefinSans-VariableFont_wght.ttf");
       }
   </style>
