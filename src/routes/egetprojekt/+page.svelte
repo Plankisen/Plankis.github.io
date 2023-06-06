@@ -1,159 +1,158 @@
 <script>
-    let money = 0
-    let betAmount = 0
-    let spinning = false
-  
-    export let items = [
-      { title: 'Home', icon: '🏠', link: '/home' },
-      { title: 'Crash', icon: '💥', link: '/crash' },
-      { title: 'Slots', icon: '🎰', link: '/slots' },
-      { title: 'Blackjack', icon: '🃏', link: '/blackjack' },
-    ];
-  
-    let activeIndex = 0;
-  
-    function setActive(index) {
-      activeIndex = index;
-    }
-  
-    let showSidebar = false;
-  
-    function toggleSidebar() {
-      showSidebar = !showSidebar;
-    }
-  
-    function handleMouseEnter() {
-      showSidebar = true;
-    }
-  
-    function handleMouseLeave() {
-      setTimeout(() => {
-        showSidebar = false;
-      }, 300);
-    }
-  
-    let multiplier = 1;
-    let cashOutAmount = 0;
-    let crashPoint = 0;
-    let crashPoint2 = 0;
-    let gameEnded = false;
-    let gameActive = false;
-    let gameStarted = false
-    let interval = 0
-    
-    const startGame = () => {
-      if (money <= 0) {
-        alert("You're out of money!");
-        return;
-      }
-  
-      if (isNaN(betAmount) || betAmount <= 0 || betAmount > money) {
-        alert("Invalid bet amount!");
-        return
-      } else {
-        money -= betAmount;
-      }
-      gameActive = true
-      gameStarted = true
-      crashPoint = Math.floor(Math.random() * 175);
-      interval = setInterval(() => {
-        crashPoint2 = Math.floor(Math.random() * 175);
-        if (gameStarted) {
-          multiplier += 0.01;
-        }
-        checkCrash();
-      }, 100);
-    };
-    
-    const cashOut = () => {
-      cashOutAmount = Math.floor(betAmount * multiplier);
-      money += cashOutAmount
-      gameEnded = true;
-      gameStarted = false
-      clearInterval(interval)
-    };
-    
-    const checkCrash = () => {
-      if (crashPoint == crashPoint2) {
-        cashOutAmount = 0;
-        gameEnded = true;
-        clearInterval(interval)
-      }
-    };
+  let money = 0
+  let betAmount = 0
+  let spinning = false
 
-    const proceedCrash = () => {
-      multiplier = 1;
-      cashOutAmount = 0;
-      gameEnded = false;
-      gameActive = false;
-      gameStarted = false
-      betAmount = 0
-    };
-    
+  export let items = [
+    { title: 'Home', icon: '🏠', link: '/home' },
+    { title: 'Crash', icon: '💥', link: '/crash' },
+    { title: 'Slots', icon: '🎰', link: '/slots' },
+    { title: 'Blackjack', icon: '🃏', link: '/blackjack' }
+  ]
+
+  let activeIndex = 0
+
+  function setActive(index) {
+    activeIndex = index
+  }
+
+  let showSidebar = false
+
+  function toggleSidebar() {
+    showSidebar = !showSidebar
+  }
+
+  function handleMouseEnter() {
+    showSidebar = true
+  }
+
+  function handleMouseLeave() {
+    setTimeout(() => {
+      showSidebar = false
+    }, 300)
+  }
+
+  let multiplier = 1
+  let cashOutAmount = 0
+  let crashPoint = 0
+  let crashPoint2 = 0
+  let gameEnded = false
+  let gameActive = false
+  let gameStarted = false
+  let interval = 0
   
-    const symbols = [
-      { id: 0, symbol: "Coal.webp", payout: 90, weight: 10 },
-      { id: 1, symbol: "Copper.png", payout: 180, weight: 8 },
-      { id: 2, symbol: "Iron.webp", payout: 400, weight: 6 },
-      { id: 3, symbol: "Silver.png", payout: 800, weight: 4 },
-      { id: 4, symbol: "Gold.webp", payout: 1600, weight: 3 },
-      { id: 5, symbol: "Mithril.png", payout: 3200, weight: 2 },
-      { id: 6, symbol: "Adamantite.png", payout: 6400, weight: 1 },
-      { id: 7, symbol: "Runite.png", payout: 12800, weight: 0.5 }
-    ];
-    const initialSlots = [0, 1, 2];
-    let slots = initialSlots.map(() => weightedRandom());
-    
-    async function spin() {
-      if (spinning) return;
-      if (money < 10) {
-        alert("You're out of money!");
-        return;
+  const startGame = () => {
+    if (money <= 0) {
+      alert("You're out of money!")
+      return
+    }
+
+    if (isNaN(betAmount) || betAmount <= 0 || betAmount > money) {
+      alert("Invalid bet amount!")
+      return
+    } else {
+      money -= betAmount
+    }
+    gameActive = true
+    gameStarted = true
+    crashPoint = Math.floor(Math.random() * 175)
+    interval = setInterval(() => {
+      crashPoint2 = Math.floor(Math.random() * 175)
+      if (gameStarted) {
+        multiplier += 0.01
       }
-      spinning = true;
+      checkCrash()
+    }, 100)
+  }
   
-      const shuffleDuration = 1000;
-      const startTime = Date.now();
+  const cashOut = () => {
+    cashOutAmount = Math.floor(betAmount * multiplier)
+    money += cashOutAmount
+    gameEnded = true
+    gameStarted = false
+    clearInterval(interval)
+  }
+  
+  const checkCrash = () => {
+    if (crashPoint == crashPoint2) {
+      cashOutAmount = 0
+      gameEnded = true
+      clearInterval(interval)
+    }
+  }
+
+  const proceedCrash = () => {
+    multiplier = 1
+    cashOutAmount = 0
+    gameEnded = false
+    gameActive = false
+    gameStarted = false
+    betAmount = 0
+  }
+
+  const symbols = [
+    { id: 0, symbol: "Coal.webp", payout: 90, weight: 10 },
+    { id: 1, symbol: "Copper.png", payout: 180, weight: 8 },
+    { id: 2, symbol: "Iron.webp", payout: 400, weight: 6 },
+    { id: 3, symbol: "Silver.png", payout: 800, weight: 4 },
+    { id: 4, symbol: "Gold.webp", payout: 1600, weight: 3 },
+    { id: 5, symbol: "Mithril.png", payout: 3200, weight: 2 },
+    { id: 6, symbol: "Adamantite.png", payout: 6400, weight: 1 },
+    { id: 7, symbol: "Runite.png", payout: 12800, weight: 0.5 }
+  ]
+  const initialSlots = [0, 1, 2]
+  let slots = initialSlots.map(() => weightedRandom())
+  
+  async function spin() {
+    if (spinning) return
+    if (money < 10) {
+      alert("You're out of money!")
+      return
+    }
+    spinning = true
+  
+    const shuffleDuration = 1000
+      const startTime = Date.now()
       while (Date.now() - startTime < shuffleDuration) {
-        slots = initialSlots.map(() => weightedRandom());
-        await delay(100);
+        slots = initialSlots.map(() => weightedRandom())
+        await delay(100)
       }
   
-      slots = initialSlots.map(() => weightedRandom());
-      checkWin();
-      spinning = false;
+      slots = initialSlots.map(() => weightedRandom())
+      checkWin()
+      spinning = false
     }
   
     function delay(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
+      return new Promise(resolve => setTimeout(resolve, ms))
     }
   
     function weightedRandom() {
-      const totalWeight = symbols.reduce((sum, symbol) => sum + symbol.weight, 0);
-      let random = Math.random() * totalWeight;
+      const totalWeight = symbols.reduce((sum, symbol) => sum + symbol.weight, 0)
+      let random = Math.random() * totalWeight
       
       for (const symbol of symbols) {
-        random -= symbol.weight;
+        random -= symbol.weight
         if (random <= 0) {
-          return symbol.id;
+          return symbol.id
         }
       }
     }
   
     function checkWin() {
-      const [symbol1, symbol2, symbol3] = slots;
+      const [symbol1, symbol2, symbol3] = slots
       
       if (symbol1 === symbol2 && symbol2 === symbol3) {
-        const payout = symbols[symbol1].payout;
-        money += payout;
-        money -= 10;
+        const payout = symbols[symbol1].payout
+        money += payout
+        money -= 10
       } else {
-        money -= 10;
+        money -= 10
       }
     }
   
-    let deck = [    '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'  ];
-    const suits = ['♠', '♡', '♢', '♣'];
+    let deck = [    '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'  ]
+    const suits = ['♠', '♡', '♢', '♣']
     const cardValues = {
       '2': 2,
       '3': 3,
@@ -168,56 +167,56 @@
       'Q': 10,
       'K': 10,
       'A': 11
-    };
+    }
     
-    let playerCards = [];
-    let dealerCards = [];
-    let playerScore = 0;
-    let dealerScore = 0;
-    let gameOver = false;
-    let gameStartedBL = false;
+    let playerCards = []
+    let dealerCards = []
+    let playerScore = 0
+    let dealerScore = 0
+    let gameOver = false
+    let gameStartedBL = false
   
     function deal() {
       if (gameStartedBL) return
       if (money <= 0) {
-        alert("You're out of money!");
-        return;
+        alert("You're out of money!")
+        return
       }
   
       if (isNaN(betAmount) || betAmount <= 0 || betAmount > money) {
-        alert("Invalid bet amount!");
+        alert("Invalid bet amount!")
         return
       } else {
-        money -= betAmount;
+        money -= betAmount
       }
   
-      playerCards = [];
-      dealerCards = [];
-      playerScore = 0;
-      dealerScore = 0;
-      gameOver = false;
+      playerCards = []
+      dealerCards = []
+      playerScore = 0
+      dealerScore = 0
+      gameOver = false
       gameStartedBL = true
   
-      let shuffledDeck = shuffle([...deck]);
+      let shuffledDeck = shuffle([...deck])
   
-      playerCards.push(getCard(shuffledDeck));
-      dealerCards.push(getCard(shuffledDeck));
-      playerCards.push(getCard(shuffledDeck));
-      dealerCards.push(getCard(shuffledDeck));
+      playerCards.push(getCard(shuffledDeck))
+      dealerCards.push(getCard(shuffledDeck))
+      playerCards.push(getCard(shuffledDeck))
+      dealerCards.push(getCard(shuffledDeck))
   
-      playerScore = calculateScore(playerCards);
-      dealerScore = calculateScore(dealerCards);
+      playerScore = calculateScore(playerCards)
+      dealerScore = calculateScore(dealerCards)
     }
   
     function hit() {
       if (!gameStartedBL || gameOver) return
   
-      playerCards.push(getCard([...deck]));
+      playerCards.push(getCard([...deck]))
   
-      playerScore = calculateScore(playerCards);
+      playerScore = calculateScore(playerCards)
       playerCards = playerCards
       if (playerScore > 21) {
-        gameOver = true;
+        gameOver = true
       }
     }
   
@@ -225,52 +224,51 @@
       if (!gameStartedBL || gameOver) return
       
       while (dealerScore < 17) {
-        dealerCards.push(getCard([...deck]));
-        dealerScore = calculateScore(dealerCards);
+        dealerCards.push(getCard([...deck]))
+        dealerScore = calculateScore(dealerCards)
         dealerCards = dealerCards
       }
       
       if (dealerScore > 21 || playerScore > dealerScore) {
-        money += betAmount * 2;
-        gameOver = true;
+        money += betAmount * 2
+        gameOver = true
       } else {
-        gameOver = true;
+        gameOver = true
       }
     }
   
     function getCard(deck) {
-      let index = Math.floor(Math.random() * deck.length);
-      return deck.splice(index, 1)[0];
+      let index = Math.floor(Math.random() * deck.length)
+      return deck.splice(index, 1)[0]
     }
   
     function calculateScore(cards) {
-      let score = 0;
-      let numAces = 0;
+      let score = 0
+      let numAces = 0
       
       for (let card of cards) {
-        let value = cardValues[card];
-        score += value;
+        let value = cardValues[card]
+        score += value
         if (card === 'A') {
-          numAces++;
+          numAces++
         }
       }
       
       while (score > 21 && numAces > 0) {
-        score -= 10;
-        numAces--;
+        score -= 10
+        numAces--
       }
       
-      return score;
+      return score
     }
   
     function shuffle(array) {
       for (let i = array.length - 1; i > 0; i--) {
-        let j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
+        let j = Math.floor(Math.random() * (i + 1))
+        [array[i], array[j]] = [array[j], array[i]]
       }
-      return array;
+      return array
       }
-
     
     function proceedBlackjack() {
       gameOver = false
