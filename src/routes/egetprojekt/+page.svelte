@@ -37,33 +37,59 @@
     let crashPoint = 0;
     let crashPoint2 = 0;
     let gameEnded = false;
+    let gameActive = false;
+    let gameStarted = false
+    let interval = 0
     
     const startGame = () => {
-      crashPoint = Math.floor(Math.random() * 150);
-      const interval = setInterval(() => {
-        crashPoint2 = Math.floor(Math.random() * 150);
-        multiplier += 0.01;
+      if (money <= 0) {
+        alert("You're out of money!");
+        return;
+      }
+  
+      if (isNaN(betAmount) || betAmount <= 0 || betAmount > money) {
+        alert("Invalid bet amount!");
+        return
+      } else {
+        money -= betAmount;
+      }
+      gameActive = true
+      gameStarted = true
+      crashPoint = Math.floor(Math.random() * 175);
+      interval = setInterval(() => {
+        crashPoint2 = Math.floor(Math.random() * 175);
+        if (gameStarted) {
+          multiplier += 0.01;
+        }
         checkCrash();
       }, 100);
     };
     
     const cashOut = () => {
-      cashOutAmount = Math.floor(bet * multiplier);
+      cashOutAmount = Math.floor(betAmount * multiplier);
+      money += cashOutAmount
       gameEnded = true;
+      gameStarted = false
+      clearInterval(interval)
     };
     
     const checkCrash = () => {
       if (crashPoint == crashPoint2) {
         cashOutAmount = 0;
         gameEnded = true;
+        clearInterval(interval)
       }
     };
-    
-    let bet = 0;
-    
-    const placeBet = (event) => {
-      bet = event.target.value;
+
+    const proceedCrash = () => {
+      multiplier = 1;
+      cashOutAmount = 0;
+      gameEnded = false;
+      gameActive = false;
+      gameStarted = false
+      betAmount = 0
     };
+    
   
     const symbols = [
       { id: 0, symbol: "Coal.webp", payout: 90, weight: 10 },
@@ -80,6 +106,10 @@
     
     async function spin() {
       if (spinning) return;
+      if (money < 10) {
+        alert("You're out of money!");
+        return;
+      }
       spinning = true;
   
       const shuffleDuration = 1000;
@@ -122,8 +152,7 @@
       }
     }
   
-  
-    const deck = [    '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'  ];
+    let deck = [    '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'  ];
     const suits = ['♠', '♡', '♢', '♣'];
     const cardValues = {
       '2': 2,
@@ -146,9 +175,11 @@
     let playerScore = 0;
     let dealerScore = 0;
     let gameOver = false;
+    let gameStartedBL = false;
   
     function deal() {
-       if (money <= 0) {
+      if (gameStartedBL) return
+      if (money <= 0) {
         alert("You're out of money!");
         return;
       }
@@ -165,8 +196,9 @@
       playerScore = 0;
       dealerScore = 0;
       gameOver = false;
+      gameStartedBL = true
   
-      let shuffledDeck = shuffle(deck);
+      let shuffledDeck = shuffle([...deck]);
   
       playerCards.push(getCard(shuffledDeck));
       dealerCards.push(getCard(shuffledDeck));
@@ -178,9 +210,9 @@
     }
   
     function hit() {
-      if (gameOver) return;
+      if (!gameStartedBL || gameOver) return
   
-      playerCards.push(getCard(deck));
+      playerCards.push(getCard([...deck]));
   
       playerScore = calculateScore(playerCards);
       playerCards = playerCards
@@ -190,10 +222,10 @@
     }
   
     function stand() {
-      if (gameOver) return;
+      if (!gameStartedBL || gameOver) return
       
       while (dealerScore < 17) {
-        dealerCards.push(getCard(deck));
+        dealerCards.push(getCard([...deck]));
         dealerScore = calculateScore(dealerCards);
         dealerCards = dealerCards
       }
@@ -235,13 +267,24 @@
       for (let i = array.length - 1; i > 0; i--) {
         let j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
-  }
-  return array;
-  }
+      }
+      return array;
+      }
+
+    
+    function proceedBlackjack() {
+      gameOver = false
+      gameStartedBL = false
+      playerScore = 0
+      dealerScore = 0
+      playerCards = []
+      dealerCards = []
+      betAmount = 0
+    }
   
   </script>
   
-  <body data-theme="mytheme">
+  <body>
     <div class="sidebar-wrapper" on:mouseenter={handleMouseEnter} on:mouseleave={handleMouseLeave}>
       {#if showSidebar}
         <div class="sidebar">
@@ -278,12 +321,15 @@
       <div class="crash-game">
         <h1>Crash Game</h1>
         {#if gameEnded}
-          <p>Game ended! Your winnings: {cashOutAmount}</p>
+          <p>Game ended! Your winnings: ${cashOutAmount}</p>
+          <button class="proceed-crash" on:click={proceedCrash}>Proceed</button>
         {:else}
           <p>Multiplier: x{multiplier.toFixed(2)}</p>
-          <input type="number" placeholder="Enter your bet" on:input={placeBet}>
-          <button class="crash-buttons" on:click={startGame}>Start Game</button>
+          <input type="number" placeholder="Enter your bet" bind:value = {betAmount}>
           <button class="crash-buttons" on:click={cashOut}>Cash Out</button>
+        {/if}
+        {#if !gameActive}
+          <button class="crash-buttons" on:click={startGame}>Start Game</button>
         {/if}
       </div>
     {/if}
@@ -301,14 +347,15 @@
       <div class="blackjack">
         {#if gameOver}
         {#if playerScore > 21}
-        <p class="game-over">You busted! Dealer wins.</p>
+        <p class="game-over">You busted! Dealer wins!</p>
         {:else if dealerScore > 21}
-        <p class="game-over">Dealer busted! You win.</p>
+        <p class="game-over">Dealer busted! You win!</p>
         {:else if playerScore > dealerScore}
         <p class="game-over">You win!</p>
         {:else}
-        <p class="game-over">Dealer wins.</p>
+        <p class="game-over">Dealer wins!</p>
         {/if}
+        <button class="proceed-blackjack" on:click={proceedBlackjack}>Proceed</button>
         {/if}
   
         {#if !gameOver}
@@ -370,7 +417,7 @@
     }
   
     .money-button:active{
-      scale: 0.9;
+      transform: translate(-50%, 0) scale(0.9);
     }
   
     .money-button:hover {
@@ -411,7 +458,7 @@
     }
   
     .sidebar-wrapper {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       width: 10px;
@@ -469,6 +516,7 @@
       margin-top: 50px;
       gap: 10px;
       flex-direction: column;
+      transform: translate(-50%, 0) scale(1.4);
     }
   
     .crash-buttons {
@@ -526,6 +574,10 @@
     .spin-button:hover {
       background-color: #45a049;
     }
+
+    .spin-button:active {
+      transform: translate(-50%, 0) scale(0.9);
+    }
   
     .blackjack{
       position: absolute;
@@ -544,11 +596,6 @@
       line-height: 150px;
     }
   
-    .hidden{
-      background-color: gray;
-      color: white;
-    }
-  
     .blackjack-button{
       margin: 5px;
       padding: 10px;
@@ -561,6 +608,10 @@
   
     .blackjack-button:hover{
       background-color: darkgreen;
+    }
+
+    .blackjack-button:active{
+      scale: 0.9;
     }
   
     .game-over{
@@ -580,7 +631,7 @@
   
     .currency-counter{
       background-color: #111827;
-      position: absolute;
+      position: fixed;
       right: 0%;
       height: 7%;
       width: 12%;
@@ -603,6 +654,57 @@
       left: 50%;
       transform: translate(-50%, 0);
     }
+
+    .proceed-blackjack{
+      position: absolute;
+      left: 50%;
+      top: 100%;
+      transform: translate(-50%, 0);
+    }
+
+    .proceed-blackjack{
+      margin: 5px;
+      padding: 10px;
+      font-size: 24px;
+      border-radius: 5px;
+      background-color: green;
+      color: white;
+      cursor: pointer;
+    }
+  
+    .proceed-blackjack:hover{
+      background-color: darkgreen;
+    }
+
+    .proceed-blackjack:active{
+      transform: translate(-50%, 0) scale(0.9);
+    }
+
+    .proceed-crash{
+      position: absolute;
+      left: 50%;
+      top: 130%;
+      transform: translate(-50%, 0);
+    }
+
+    .proceed-crash {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+  
+    .proceed-crash:active{
+      transform: translate(-50%, 0) scale(0.9);
+    }
+  
+    .proceed-crash:hover {
+      background-color: #0056b3;
+    }
+
     @font-face{
           font-family: "JosefinSans";
           font-style: normal;
