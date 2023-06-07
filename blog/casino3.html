@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="../favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		
+		<link href="../_app/immutable/assets/2.2f52a585.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/pico.f2a98cde.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/5.206d1311.css" rel="stylesheet">
+		<link rel="modulepreload" href="../_app/immutable/entry/start.aa0cf5ca.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/index.e7fff774.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/singletons.4e53c4b8.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/parse.bee59afc.js">
+		<link rel="modulepreload" href="../_app/immutable/entry/app.54e4554a.js">
+		<link rel="modulepreload" href="../_app/immutable/chunks/preload-helper.41c905a7.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/0.73fed5e0.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/2.b01c6b10.js">
+		<link rel="modulepreload" href="../_app/immutable/nodes/5.10341d9d.js">
+	</head>
+	<body>
+		<div style="display: contents">
+
+
+<nav><a href="/">Hem</a>
+  <a href="/telltale">Telltale</a>
+  <a href="/todo">Todo</a>
+  <a href="/memory">Memory</a>
+  <a href="/chatbot">Chatbot</a>
+  <a href="/blog">Blog</a>
+  <a target="_blank" href="https://github.com/Plankisen/Plankisen.github.io">GitHub</a></nav>
+
+<hr>
+
+<main><main class="svelte-g4hvg4"><article class="post svelte-g4hvg4"><h1>CASINO LAST UPDATE</h1>
+<p>Nu är jag i princip klar med projektet. Jag har finslipat en massa saker som fått spelen att faktiskt fungera och inte enkelt bli förstörda. Detta är en lista av några förbättringar jag har gjort som inte fanns tidigare.</p>
+<ul><li>Nu kan man inte klicka på deal medans ett blackjack game är pågående och man kan inte klicka på hit eller stand medans ett game inte är pågående.</li>
+<li>Blackjack och crash har nu “proceed” knappar efter varje game så att man kan spela igen utan att ladda om sidan.</li>
+<li>Knapparna är nu mer stylish med click effects, hover effects och riktig bakgrund. Även stylingen generellt är bättre.</li>
+<li>Nu kan man faktiskt vinna pengar från crash och slots vilket man inte kunde göra förut.</li>
+<li>En knapp på “home page” som man kan klicka på för att få +$1 så att man faktiskt har något att gambla med.</li></ul>
+<p>Jag fixade även local saving på pengarna så att man slipper börja om varje gång man laddar om sidan.</p>
+<pre class="language-js"><!-- HTML_TAG_START --><code class="language-js"><span class="token function">onMount</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">const</span> storedCount <span class="token operator">=</span> window<span class="token punctuation">.</span>localStorage<span class="token punctuation">.</span><span class="token function">getItem</span><span class="token punctuation">(</span><span class="token string">'money'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>storedCount<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      money <span class="token operator">=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>storedCount<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">function</span> <span class="token function">saveCurrencyCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    window<span class="token punctuation">.</span>localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span><span class="token string">'money'</span><span class="token punctuation">,</span> money<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span></code><!-- HTML_TAG_END --></pre>
+<p>Och efter varje gång som valuta värdet uppdateras så sparar man det med denna funktion.</p>
+<pre class="language-js"><!-- HTML_TAG_START --><code class="language-js"><span class="token function">saveCurrencyCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code><!-- HTML_TAG_END --></pre></article>
+    <a href="/blog" class="btn svelte-g4hvg4">Return</a>
+    <div class="svelte-g4hvg4"></div>
+</main></main>
+
+
+			
+			<script>
+				{
+					__sveltekit_1hspfa1 = {
+						base: new URL("..", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null,null];
+
+					Promise.all([
+						import("../_app/immutable/entry/start.aa0cf5ca.js"),
+						import("../_app/immutable/entry/app.54e4554a.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 2, 5],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>
