@@ -80,6 +80,9 @@
   }
   
   const cashOut = () => {
+    if (!gameStarted){
+      return
+    }
     cashOutAmount = Math.floor(betAmount * multiplier)
     money += cashOutAmount
     saveCurrencyCount()

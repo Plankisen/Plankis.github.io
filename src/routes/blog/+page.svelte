@@ -2,6 +2,7 @@
     <h1>Super blog</h1>
     <a class="btn" href="/blog/casino1">Casino update 1</a>
     <a class="btn-2" href="/blog/casino2">Casino update 2</a>
+    <a class="btn-3" href="/blog/casino3">Casino update 3</a>
 </main>
 
 <style>
@@ -38,7 +39,7 @@
 
         user-select: none;
     }
-    .btn:hover, .btn-2:hover {
+    .btn:hover, .btn-2:hover, .btn-3:hover {
         background-color: #ED5A39;
         color: black;
     }
@@ -49,6 +50,24 @@
         align-items: center;
         position: absolute;
         top: 40%;
+
+        width: 200px;
+        height: 40px;
+        color: black;
+        background-color: #F7773B;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-right: 5px;
+
+        user-select: none;
+    }
+
+    .btn-3 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 55%;
 
         width: 200px;
         height: 40px;
