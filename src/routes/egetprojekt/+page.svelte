@@ -1,7 +1,20 @@
 <script>
+  import {onMount} from 'svelte';
+  
   let money = 0
   let betAmount = 0
   let spinning = false
+  
+  onMount(() => {
+    const storedCount = window.localStorage.getItem('money');
+    if (storedCount) {
+      money = parseInt(storedCount, 10);
+    }
+  });
+
+  function saveCurrencyCount() {
+    window.localStorage.setItem('money', money.toString());
+  }
 
   export let items = [
     { title: 'Home', icon: '🏠', link: '/home' },
@@ -52,6 +65,7 @@
       return
     } else {
       money -= betAmount
+      saveCurrencyCount()
     }
     gameActive = true
     gameStarted = true
@@ -68,6 +82,7 @@
   const cashOut = () => {
     cashOutAmount = Math.floor(betAmount * multiplier)
     money += cashOutAmount
+    saveCurrencyCount()
     gameEnded = true
     gameStarted = false
     clearInterval(interval)
@@ -146,8 +161,10 @@
         const payout = symbols[symbol1].payout
         money += payout
         money -= 10
+        saveCurrencyCount()
       } else {
         money -= 10
+        saveCurrencyCount()
       }
     }
   
@@ -188,6 +205,7 @@
         return
       } else {
         money -= betAmount
+        saveCurrencyCount()
       }
   
       playerCards = []
@@ -231,8 +249,15 @@
       
       if (dealerScore > 21 || playerScore > dealerScore) {
         money += betAmount * 2
+        saveCurrencyCount()
         gameOver = true
-      } else {
+      } 
+      else if (playerScore === dealerScore) {
+        money += betAmount
+        saveCurrencyCount()
+        gameOver = true
+      }
+      else {
         gameOver = true
       }
     }
@@ -310,7 +335,7 @@
       <h1>Welcome to S.C.A.M casino!</h1>
       <h2 class="secondary-text">Here at S.C.A.M casino you can make your wildest dreams come true! All you need to do is gamble until you become a millionaire! You can start your journey by clicking the button below to gain +$1 to gamble with!</h2>
     </div>
-    <button class="money-button" on:click={()=>{money += 1}}>+$1</button>
+    <button class="money-button" on:click={()=>{money += 1, saveCurrencyCount()}}>+$1</button>
     <div class="linus-review">
       <img src="Linus.jpg" class="linus-img" alt="Review 1">
       <p>I love this website! I committed insurance fraud to keep gambling and nearly won! 5/5⭐</p>
@@ -352,6 +377,8 @@
         <p class="game-over">Dealer busted! You win!</p>
         {:else if playerScore > dealerScore}
         <p class="game-over">You win!</p>
+        {:else if playerScore === dealerScore}
+        <p class="game-over">It's a draw!</p>
         {:else}
         <p class="game-over">Dealer wins!</p>
         {/if}
