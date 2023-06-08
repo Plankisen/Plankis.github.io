@@ -130,15 +130,15 @@
     spinning = true
   
     const shuffleDuration = 1000
-      const startTime = Date.now()
-      while (Date.now() - startTime < shuffleDuration) {
-        slots = initialSlots.map(() => weightedRandom())
-        await delay(100)
-      }
-  
+    const startTime = Date.now()
+    while (Date.now() - startTime < shuffleDuration) {
       slots = initialSlots.map(() => weightedRandom())
-      checkWin()
-      spinning = false
+      await delay(100)
+    }
+
+    slots = initialSlots.map(() => weightedRandom())
+    checkWin()
+    spinning = false
     }
   
     function delay(ms) {
